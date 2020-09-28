@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 bool quant (char letra, vector <char> palavra, int quantidade) {
     int quanti = 0;
     for (int i = 0; i < palavra.size(); i++){
@@ -41,7 +40,6 @@ bool verifica (vector <char> palavra, vector <char> anagrama) {
         cout << palavra[i];
     }*/
 
-
     for (int i = 0; i < palavra.size(); i++){
         if (palavra[i] != anagrama[i]) {
             ans = false;
@@ -50,7 +48,6 @@ bool verifica (vector <char> palavra, vector <char> anagrama) {
     }
     return ans;
 }
-
 
 int main () {
     string palavra, anagrama;
@@ -69,15 +66,9 @@ int main () {
     }
     sort (auxanagrama.begin(), auxanagrama.end());
 
-    
-
-
     if (verifica (auxpalavra, auxanagrama)) {
         cout << 'S' << endl;  
     } else cout << 'N' << endl; 
-
-    
-
 
     return 0;
 }
