@@ -36,7 +36,6 @@ int main(int argc, char const *argv[]){
 
 // Utilizando busca binaria 
 
-
 ll N, F;
 ll ciclos [100005];
 

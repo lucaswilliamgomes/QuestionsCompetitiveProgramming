@@ -3,25 +3,13 @@
 using namespace std;
 
 int main () {
-    int k, l;
-    queue<int> fila;
+    float a, b;
 
-    cin >> k;
-    cin >> l;
-
-    for (int i = 1; i <= 16; i++){
-        fila.push(i);
-    }
-
-    for (int i = 0; i < 8; i+=2){
-        
-        cout << fila.front();
-        fila.pop();
-
-
-    }
-
+    cin >> a >> b;
     
-
+    if (ceil(a/2) == ceil(b/2)) cout << "oitavas" << endl;
+    else if (ceil(a/4) == ceil(b/4)) cout << "quartas" << endl;
+    else if (ceil(a/8) == ceil(b/8)) cout << "semifinal" << endl;
+    else cout << "final" << endl; 
     return 0;
 }
