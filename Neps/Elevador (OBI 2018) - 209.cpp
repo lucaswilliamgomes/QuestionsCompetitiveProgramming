@@ -9,8 +9,8 @@
 
 using namespace std;
 
-vector <int> pesos [100005];
-int n;
+vector <int> pesos;
+int n, aux;
 
 bool elevador (int num) {
     
@@ -25,8 +25,11 @@ int main(int argc, char const *argv[]){
     
     cin >> n;
     for (int i = 0; i < n; i++){
-        cin >> pesos[i];
+        cin >> aux;
+        pesos.PB(aux);
     }
+
+    sort (pesos.begin(), pesos.end());
 
     if (pesos[0] > 8) {
         cout << 'N' << endl; 
