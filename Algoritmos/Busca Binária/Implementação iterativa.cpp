@@ -1,5 +1,5 @@
 // A busca binária é uma forma menos complexa para achar
-// um elemento em um vetor. 
+// um elemento em um array ordenado. 
 // Complexidade = O(log de n na base 2) onde n é o tamanho do vetor;
 
 

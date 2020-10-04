@@ -1,34 +1,22 @@
 #include <bits/stdc++.h>
-#define ll long long
 
 using namespace std;
 
 int main () {
-    vector <int> numbers;
-    int N;
-    ll number;
-
-    cin >> N;
-
-    for (int i = 0; i < N; i++) {
-        cin >> number;
-        numbers.push_back(number);
+    int n;
+    int numbers[1005];
+    cin >> n;
+    for (int i = 0; i < n; i++){
+        cin >> numbers[i];
+    }
+    int ans = 1;
+    for (int i = 2; i < n; i++){
+        if((numbers[i] - numbers[i-1]) != (numbers[i-1] - numbers[i-2])) ans++;
     }
 
-    if (numbers.size() == 1) {
-        cout << 1 << endl;
-        return 0;
-    }
-
-    int tam = numbers.size();
-
-    for(int i = 0; i < tam; i++){
-        for(int i = 0; i < tam; i++){
-        
-        }
-    }
-
+    cout << ans << endl; 
     return 0;
 }
+
 
 

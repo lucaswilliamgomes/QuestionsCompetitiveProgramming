@@ -51,6 +51,8 @@ int main(int argc, char const *argv[]){
         cin >> p >> q >> c;
 
         dfs (p, -1);
+
+        cor[p] = c;
         
         while (q != p) {
             cor[q] = c;
