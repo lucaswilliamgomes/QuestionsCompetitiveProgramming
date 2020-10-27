@@ -27,7 +27,6 @@ int dfs (int u, int pai){
     }
 
     return sz;
-
 }
 
 int main (){
