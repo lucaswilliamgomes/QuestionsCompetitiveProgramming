@@ -13,7 +13,6 @@ int minimumSwaps(vector<int> arr) {
     }
     return ans;
 }
-
 int main (){
     int n, aux;
     vector<int> arr;
@@ -22,9 +21,7 @@ int main (){
         cin >> aux;
         arr.push_back(aux);
     }
-
     cout << minimumSwaps(arr) << endl;
-
     return 0;
 }
 
