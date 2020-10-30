@@ -3,7 +3,8 @@
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
