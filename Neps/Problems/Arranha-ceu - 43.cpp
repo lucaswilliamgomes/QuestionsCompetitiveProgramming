@@ -52,10 +52,10 @@ int main() {
 
     build(1, 1, N);
 
-    // for (int i = 1; i < 40; i++){
-    //     cout << t[i] << " ";
-    // }
-    // cout << endl;
+    for (int i = 1; i < 40; i++){
+        cout << t[i] << " ";
+    }
+    cout << endl;
 
     int op, k, p;
     while (Q--) {
