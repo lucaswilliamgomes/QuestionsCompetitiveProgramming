@@ -1,55 +1,51 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
 #define MAXN 100005
 
-using namespace std;
-
-void merge(int *arr, int l, int m, int r)
+void merge(int arr[], int l, int m, int r)
 {
     int n1 = m - l + 1;
     int n2 = r - m;
  
-    // Create temp arrays
+    // Cria arrays temporários
     int L[n1], R[n2];
  
-    // Copy data to temp arrays L[] and R[]
+    // Copia os dados para os arrays temporários
     for (int i = 0; i < n1; i++)
         L[i] = arr[l + i];
     for (int j = 0; j < n2; j++)
         R[j] = arr[m + 1 + j];
  
-    // Merge the temp arrays back into arr[l..r]
+    // Começamos o merge dos dois array (L[] e R[]) de volta para o array arr[]
  
-    // Initial index of first subarray
+    // Index inicial do primeiro subarray
     int i = 0;
  
-    // Initial index of second subarray
+    // Index inicial do segundo subarray
     int j = 0;
  
-    // Initial index of merged subarray
+    // index inicial da submatriz merged
     int k = l;
- 
+    
+    // Aqui acontece o merge
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
-        }
-        else {
+        } else {
             arr[k] = R[j];
             j++;
         }
         k++;
     }
  
-    // Copy the remaining elements of
-    // L[], if there are any
+    // Copia os elementos restantes de L [], se houver algum
     while (i < n1) {
         arr[k] = L[i];
         i++;
         k++;
     }
  
-    // Copy the remaining elements of
-    // R[], if there are any
+    // Copie os elementos restantes de R [], se houver algum
     while (j < n2) {
         arr[k] = R[j];
         j++;
@@ -57,12 +53,10 @@ void merge(int *arr, int l, int m, int r)
     }
 }
  
-// l is for left index and r is
-// right index of the sub-array
-// of arr to be sorted */
-void mergeSort(int *arr,int l,int r){
+
+void mergeSort(int arr[],int l,int r){
     if(l>=r){
-        return;//returns recursively
+        return;
     }
     int m =l+ (r-l)/2;
     mergeSort(arr,l,m);
@@ -74,18 +68,18 @@ void mergeSort(int *arr,int l,int r){
 int main() {
     
     int arr[MAXN], n;
-    cin >> n;
+    scanf("%d", &n);
 
     for (int i = 0; i < n; i++){
-        cin >> arr[i];
+        scanf("%d", &arr[i]);
     }
 
     mergeSort(arr, 0, n-1);
 
     for (int i = 0; i < n; i++){
-        cout << arr[i] << " ";
+        printf("%d ", arr[i]);
     }
 
-    cout << endl;
+    printf("\n");
     return 0;
 }
