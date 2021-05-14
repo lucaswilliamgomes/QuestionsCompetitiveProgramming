@@ -7,7 +7,6 @@
 #define EB emplace_back
 #define MAXN 2000020
 
-
 using namespace std;
 
 int main(int argc, char const *argv[]){

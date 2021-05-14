@@ -7,16 +7,15 @@
 #define EB emplace_back
 #define MAXN 2000020
 
-
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    double vet[100];
-    for (int i = 0; i < 100; i++){
-        cin >> vet[i];
-    }
-    for (int i = 0; i < 100; i++){
-        if (vet[i] <= 10) printf("A[%d] = %.1lf\n", i, vet[i]);
-    }
+    int a1, a2, a3, sum1, sum2, sum3;
+    cin >> a1 >> a2 >> a3;
+    sum1 = (a2 * 2) + (a3 * 4);
+    sum2 = (a1*2) + (a3 * 2);
+    sum3 = (a1*4) + (a2 * 2);
+    int aux = min(sum2, sum1);
+    cout << min(aux, sum3) << endl;
     return 0;
 }

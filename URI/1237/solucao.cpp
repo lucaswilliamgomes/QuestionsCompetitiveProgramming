@@ -7,30 +7,22 @@
 #define EB emplace_back
 #define MAXN 2000020
 
-
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    string str;
     int n;
     cin >> n;
-    cin.ignore();
+    
     while (n--) {
-        getline(cin, str);
-        int tam = str.length();
-        for (int i = 0; i < tam; i++){ 
-            if (isalpha(str[i])) {
-                str[i] += 3;
-            }
-        }
-
-        reverse(ALL(str));
-
-        for (int i = tam/2; i < tam; i++){ 
-            str[i] -= 1;
+        string str;
+        int k;
+        cin >> str >> k;
+        for (int i = 0; i < str.length(); i++) {
+            if (int(str[i]) - k < 65) {
+                str[i] = 90 - (k - (int(str[i]) - 64));
+            } else str[i] -= k;       
         }
         cout << str << endl;
     }
-
     return 0;
 }
