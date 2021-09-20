@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
-#define MAXN 2000020
+#define ll long long
+#define MAXN 100010
+
 using namespace std;
 
-int t[MAXN*4];
+ll t[MAXN*4], values[MAXN], cont = 1;
 
 void build (int i, int l, int r) {
     // Nó folha
     if (l == r) {
-        t[i] = valores[l];
+        t[i] = values[l];
         return;
     }
     int e = 2 * i;
@@ -21,7 +23,7 @@ void build (int i, int l, int r) {
     t[i] = t[e] + t[d];
 }
 
-int query (int i, int l, int r, int ql, int qr){
+ll query (int i, int l, int r, int ql, int qr){
     // Se o intervalo atual estiver completamente contido no intervalo que eu quero 
     if (ql <= l && r <= qr) return t[i];
     // Se o intervalo atual estiver completamente fora do intervalo que eu quero 
@@ -34,7 +36,7 @@ int query (int i, int l, int r, int ql, int qr){
     return query(e, l, m, ql, qr) + query(d, m+1, r, ql, qr);
 }
 
-void update (int i, int l, int r, int p, int x) {
+void update (int i, int l, int r, int p, ll x) {
     if (l == r) t[i] = x;
     else {
         int m = (l+r)/2;
@@ -44,8 +46,29 @@ void update (int i, int l, int r, int p, int x) {
     }
 }
 
-int main(int argc, char) {
+int main(int argc, char const *argv[])
+{
+    ll n, l, r, k, value;
+    cin >> n;
+    for(int i = 0; i < n; i++) {
+        cin >> k >> value;
+        for (int j = 0; j < k; j++) {
+            values[cont] = value;
+            cont++;
+        }
+    }
 
+    //build(1, 1, cont-1);
+    for (int i = 1; i < cont; i++) {
+        update(1, 1, cont-1, i, values[i]);
+    }
 
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> l >> r;
+        cout << query(1, 1, cont-1, l, r) << endl;
+    }
+    
     return 0;
 }

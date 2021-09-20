@@ -31,7 +31,6 @@ int main(int argc, char const *argv[])
     }
     for (int i = 1; i < cont; i++) {
         update(i, values[i]);
-        //cout << BIT[i] << endl;
     }
 
     cin >> n;
