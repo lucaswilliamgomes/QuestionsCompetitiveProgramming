@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
             grafo.emplace_back(u,v,c);
         }
 
-        cout << soma - kruskal() << endl;
+        cout << kruskal() << endl;
     
     return 0;
 }
