@@ -10,10 +10,10 @@ int buscaBinaria (int vetor[], int valor, int esquerda, int direita){
     if (esquerda >= direita) return -1; // Não encontrado
     else {
         if (vetor[meio] > valor) {
-            return buscaBinaria (vetor, valor, meio + 1, direita);
+            return buscaBinaria (vetor, valor, l, m);
         }
         if (vetor[meio] < valor) {
-            return buscaBinaria (vetor, valor, esquerda, meio - 1);
+            return buscaBinaria (vetor, valor, m+1, r);
         }
     }
 
