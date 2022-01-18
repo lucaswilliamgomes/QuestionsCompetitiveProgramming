@@ -7,7 +7,6 @@ ll fatorial (ll num){
 	else return (num * fatorial(num-1));
 }	
 
-
 int main (){
 	ll num;
 	cin >> num;
