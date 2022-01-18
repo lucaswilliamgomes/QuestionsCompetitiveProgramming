@@ -1,34 +1,22 @@
 // TLE
 #include <bits/stdc++.h>
-
+#define MAXN 1010
+#define MAXV 100010
 using namespace std;
 
 bool ans = false;
 vector<int> coins;
-int dp[1010][2];
+int dp[MAXN][MAXV];
 int v, m;
 
-void troco(int i, int falta)
+int troco(int i, int falta)
 {
-    //cout << coins[i] << " " << falta << endl;
-
-    if (i == m || falta < 0) return;
-    
-    // uso esta moeda
-    dp[i][0] = falta - coins[i];
-    if (dp[i][0] == 0) {
-        ans = true;
-        return;
-    }
-    troco(i+1, dp[i][0]);
-
-    // não uso 
-    dp[i][1] = falta;
-    if (dp[i][1] == 0) {
-        ans = true;
-        return;
-    }
-    troco(i+1, dp[i][1]);
+    if (falta == 0) return 0;
+    if ((falta > 0 && i == m) || falta < 0 || i == m) return INT32_MAX - 1;
+    if (dp[i][falta] == -1) {
+        dp[i][falta] = min(1 + troco(i+1, falta - coins[i]), troco(i+1, falta));
+    } 
+    return dp[i][falta];
 }
 
 int main()
@@ -40,9 +28,15 @@ int main()
         cin >> coins[i];
     }
 
-    troco(0, v);
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= v; j++) {
+            dp[i][j] = -1;
+        }
+    }
 
-    if (ans)
+    //cout << troco(0, v) << endl;
+
+    if (troco(0, v) <= coins.size())
     {
         cout << "S" << endl;
     }
