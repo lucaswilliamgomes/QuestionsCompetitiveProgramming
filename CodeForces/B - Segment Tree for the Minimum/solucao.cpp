@@ -48,7 +48,6 @@ void update (int i, int l, int r, int p, ll v) {
 
 int main () {
     cin >> N >> M;
-
     for (int i = 1; i <= N; i++){
         cin >> ar[i];
     }
