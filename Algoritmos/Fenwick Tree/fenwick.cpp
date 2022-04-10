@@ -1,6 +1,6 @@
 #define ll long long 
 
-ll values[100050], BIT[100050]; 
+ll values[100050], BIT[100050];
 
 ll query(int i) {
 	ll sum = 0;
