@@ -6,7 +6,6 @@ using namespace std;
 int arr[MAXN], N, K;
 
 int binary_search(int value, int l, int r) {
-
     while (r > l + 1) {
         int m = (l + r) / 2;
         if (arr[m] < value) {
