@@ -3,7 +3,7 @@
 using namespace std;
 
 int visitados[1005];
-vector <int> grafo[1005];
+vector<int> grafo[1005];
 
 int n, m;
 
@@ -28,8 +28,7 @@ int main () {
         visitados[i] = -1;
     }
 
-
-    for (int i = 0; i < m; i++){
+    for (int i = 0; i < m; i++) {
         cin >> u >> v;
         grafo[u].push_back(v);
         grafo[v].push_back(u);

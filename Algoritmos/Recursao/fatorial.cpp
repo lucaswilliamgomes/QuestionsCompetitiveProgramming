@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 #define ll long long
+
 using namespace std;
+
+ll fat[100010];
 	
 ll fatorial (ll num){
 	if (num == 0) return 1;

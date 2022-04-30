@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int cont = 0;
+
 // Tamanho máximo do grafo
 const int MAX = 100;
 
@@ -13,8 +13,6 @@ int graph[MAX][MAX];
 // Graus dos vertices
 int d[MAX];
 
-set<int> cliques;
-
 // Função para verificar se dado um conjunto de
 // vértices no array store é um clique ou não
 bool is_clique(int b)
@@ -26,7 +24,6 @@ bool is_clique(int b)
             // Se algum vertice estiver faltando
             if (graph[store[i]][store[j]] == 0)
                 return false;
-        cliques.insert(store[i]);
     }
     return true;
 }
@@ -42,7 +39,6 @@ int maxCliques(int i, int l)
     // pode ser inserido
     for (int j = i + 1; j <= n; j++)  // Para cada aresta eu vou tentar encontrar o maior subgrafo clique comecando dessa aresta
     {
-        cont++;
         // Adiciono o vertice no store
         store[l] = j;
 
@@ -55,8 +51,6 @@ int maxCliques(int i, int l)
 
             // Verifique se outra aresta pode ser adicionada
             max_ = max(max_, maxCliques(j, l + 1));
-        } else {
-            cliques.clear();
         }
     }
     return max_;
@@ -65,7 +59,7 @@ int maxCliques(int i, int l)
 int main()
 {
     int edges[][2] = {
-        {1, 2}, {1, 3}, {1, 4}, {1, 5}, 
+        {1, 2}, {1, 3}, {1, 4}, {1, 5},
         {2, 3},{2,4}, {2, 5},
         {3, 4}, {3, 5}
         };
@@ -79,11 +73,6 @@ int main()
     }
 
     cout << maxCliques(0, 1) << endl;
-    cout << cont << endl;
-    for (auto it : cliques)
-    {
-        cout << it << " ";
-    }
-    cout << endl;
+
     return 0;
 }
