@@ -5,7 +5,6 @@ using namespace std;
 struct Aresta
 {
     int u, v, c;
-
     Aresta(int u = 0, int v = 0, int c = 0) : u(u), v(v), c(c) {}
 
     bool operator < (const Aresta &a) {
