@@ -103,7 +103,7 @@ int main(int argc, char const *argv[])
 
     for (int i = 0; i < 10; i++)
     {
-        cout << i << " - grau " << degrees[i] << " <-";
+        cout << i << " - grau " << degrees[i] << " <- ";
         for (auto it : grafo[i])
         {
             cout << " " << it;
