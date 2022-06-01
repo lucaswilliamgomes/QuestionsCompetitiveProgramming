@@ -37,6 +37,10 @@ vector<vector<int>> subsets(vector<int> &A)
     return res;
 }
 
+// Verifica se todos os vértices de um subgrafo estão interligados
+// onde grafo é uma matriz de adjacência e o subgrafo é uma lista de vértices.
+// Explicação: Para cada vértice do subgrafo eu verifico se ele está ligado a todos os outros
+// vértices desse subgrafo atravez da minha matriz de adjacência que guarda os nós do grafo.
 bool ehUmSubgrafoCompleto(vector<int> subgrafo)
 {
     if (subgrafo.size() > 1)
@@ -45,9 +49,6 @@ bool ehUmSubgrafoCompleto(vector<int> subgrafo)
         {
             for (int k = j + 1; k < subgrafo.size(); k++)
             {
-                // cout << subgrafo[j] << " " << subgrafo[k] << endl;
-                //  Verifico se j e k estao ligados
-                //  Se n estiverem returno false
                 if (find(grafo[subgrafo[j]].begin(), grafo[subgrafo[j]].end(), subgrafo[k]) == grafo[subgrafo[j]].end())
                     return false;
             }
