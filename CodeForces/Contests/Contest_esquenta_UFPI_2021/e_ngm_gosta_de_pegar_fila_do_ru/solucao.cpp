@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int values[100010], BIT[100010]; 
+int values[100010], BIT[100010];
 
 int query(int i) {
 	int sum = 0;

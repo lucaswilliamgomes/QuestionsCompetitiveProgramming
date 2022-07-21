@@ -39,7 +39,7 @@ void update (int i, int l, int r, int p, ll v) {
         int e = 2*i;
         int d = 2*i+1;
         if (p <= m) update(e, l, m, p, v);
-        else update(d, m+1, r, p, v); 
+        else update(d, m+1, r, p, v);
 
         t[i] = t[e] + t[d];
     }
