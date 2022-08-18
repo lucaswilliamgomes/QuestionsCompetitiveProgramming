@@ -74,7 +74,7 @@ int main () {
 
     cin >> servidor;
 
-    vector<int>   = Dijkstra(servidor);
+    vector<int> distancias = Dijkstra(servidor);
 
     int min_ping = INT32_MAX;
     int max_ping = INT32_MIN;
