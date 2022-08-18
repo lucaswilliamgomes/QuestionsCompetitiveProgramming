@@ -11,20 +11,20 @@ struct Code
 
     bool operator<(const Code &a)
     {
-        return a.cont > cont;
+        return a.code > code;
     }
 };
 
 
 int main(int argc, char const *argv[])
 {
-
     int t, n;
     cin >> t;
 
     while (t--) {
         map<string, int> contas;
         vector<Code> ar;
+
         cin >> n;
 
         for (int i = 0; i < n; i++) {
@@ -39,23 +39,17 @@ int main(int argc, char const *argv[])
         }
 
         for (auto it: contas) {
-            Code code;
-            code.code = it.first;
-            code.cont = it.second;
-            cout << it.first << " " << it.second << endl;
+            Code code(it.first, it.second);
             ar.push_back(code);
         }
-
-        cout << ar.size() << endl;
 
         sort(ar.begin(), ar.end());
 
         for (auto it: ar) {
             cout << it.code << " " << it.cont << endl;
         }
-        
     }
    
-
     return 0;
 }
+
