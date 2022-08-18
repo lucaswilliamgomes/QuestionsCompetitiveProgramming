@@ -31,5 +31,31 @@ int main(int argc, char** argv)
 {
     optimize;
 
+    int n, q;
+    cin >> n >> q;
+    vector<int> ar(n + 1);
+    vector<int> counts(n + 1);
+    vector<int> freq(n+1);
+
+    for (int i = 0; i < n; i++) {
+        cin >> ar[i];
+    }
+
+    sort(ar.rbegin(), ar.rend());
+
+    for (int i = 1; i < q; i++) {
+        int a, b;
+        cin >> a >> b;
+        counts[a]++;
+        counts[b+1]--;
+    }
+
+    for (int i = 1; i < n; i++) {
+        
+    }
+
+
+
+
     return 0;
 }
