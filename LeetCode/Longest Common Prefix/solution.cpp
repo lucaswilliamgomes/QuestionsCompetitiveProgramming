@@ -26,44 +26,24 @@ using namespace __gnu_pbds;
 
 #define ordered_set tree<os_type, null_type,less<os_type>, rb_tree_tag,tree_order_statistics_node_update>
 
-int main(int argc, char** argv)
-{
-    optimize;
-
-    int n, q;
-    cin >> n >> q;
-    vector<int> ar(n + 1);
-    vector<int> counts(n + 2);
-    vector<int> freq(n+1);
-
-    for (int i = 0; i < n; i++) {
-        cin >> ar[i];
-    }
-
-    sort(ar.rbegin(), ar.rend());
-
-    for (int i = 1; i <= q; i++) {
-        int a, b;
-        cin >> a >> b;
-        
-        counts[a]++;
-        counts[b+1]--;
-    }
-
-    int acum = 0;
-    for (int i = 1; i <= n; i++) {
-        acum += counts[i];
-        freq[i] = acum;
-    }
-
-    sort(freq.rbegin(), freq.rend());
-
-    ll ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans += 1LL * freq[i] * ar[i];
-    }
+string longestCommonPrefix(vector<string>& strs) {
+    string ans;
+    int cont = 0;
     
-    cout << ans << endl;
+    while (true) {
+        char pivo = strs[0][cont];
+        for (int i = 0; i < strs.size(); i++) {
+            if (cont < strs[i].size()) {
+                if (strs[i][cont] == pivo) 
+                    continue;
+                else 
+                    return ans;
+            } else return ans;
+        }
+        ans += pivo;
+        cont++;
+    }
 
-    return 0;
-}
+
+    return ans;
+}   
