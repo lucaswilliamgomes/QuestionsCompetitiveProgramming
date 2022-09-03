@@ -66,9 +66,9 @@ int main(int argc, char** argv)
     }
 
 
-    if (linha && coluna || !linha && !coluna) 
+    if (linha && coluna || !linha && !coluna)
         cout << "+" << endl;
-    else if (coluna) 
+    else if (coluna)
         cout << "|" << endl;
     else 
         cout << "-" << endl;
