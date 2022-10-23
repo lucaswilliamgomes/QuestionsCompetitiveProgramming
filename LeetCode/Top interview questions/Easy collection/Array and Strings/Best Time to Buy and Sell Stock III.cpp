@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
+
 #define optimize                 \
     ios::sync_with_stdio(false); \
     cin.tie(NULL);               \
@@ -30,11 +31,33 @@ using namespace __gnu_pbds;
 #define ordered_set tree<os_type, null_type, less<os_type>, rb_tree_tag, tree_order_statistics_node_update>
 
 int maxProfit(vector<int>& prices) {
-    int profit = 0;
-    for (int i = 0; i < prices.size() - 1; i++) {
-        if (prices[i] < prices[i+1]) profit += (prices[i + 1] - prices[i]);
+
+    int n = prices.size();
+    if (n == 0) return 0;
+    vector<int> left(n), right(n);
+    int min_ = prices[0];
+    // left[0] = 0;
+    for (int i = 1; i < n; i++) {
+        min_ = min(prices[i], min_);
+        int profit = prices[i] - min_;
+        left[i] = max(left[i-1], profit);
     }
-    return profit;
+
+    int max_ = prices[n-1];
+    //right[n-1] = 0;
+    for (int i = n - 2; i >= 0; i--) {
+        max_ = max(max_, prices[i]);
+        int profit = max_ - prices[i];
+        right[i] = max(right[i+1], profit);
+    }
+
+    int ans = 0;
+
+    for (int i = 0; i < n; i++) {
+        ans = max(ans, (left[i] + right[i]));
+    }
+
+    return ans;
 }
 
 int main(int argc, char **argv)

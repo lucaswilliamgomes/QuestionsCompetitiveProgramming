@@ -32,20 +32,39 @@ using namespace __gnu_pbds;
 void rotate(vector<vector<int>>& matrix) {
     int size = matrix.size();
 
-    for () {
-        for () {
-            
+    for (int i = 0; i < (size + 1) / 2; i++) {
+        for (int j = 0; j < size/2; j++) {
+            int temp = matrix[size - 1 - j][i];
+            matrix[size - 1 - j][i] = matrix[size - 1 - i][size - j - 1];
+            matrix[size - 1 - i][size - j - 1] = matrix[j][size - 1 -i];
+            matrix[j][size - 1 - i] = matrix[i][j];
+            matrix[i][j] = temp;
         }
     }
-
-
 }
 
 
 int main(int argc, char **argv)
 {
     optimize;
-    
+    int n;
+    cin >> n;
+    vector<vi> matrix(n, vi(n));
+
+    for (int i = 0 ; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    rotate(matrix);
+
+    for (int i = 0 ; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
