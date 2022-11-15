@@ -34,14 +34,11 @@ const double PI = acos(-1.0);
  
 struct point
 {
-    double x, y;
+    int x, y;
     point() { x = y = 0.0; }
     point(double _x, double _y) : x(_x), y(_y) {}
  
-    double norm()
-	{
-		return sqrt(x*x + y*y);
-	}
+    double norm() { return hypot(x, y); }
  
     point normalized()
     {
@@ -80,6 +77,10 @@ struct point
     point operator * (double k) const
     {
         return point(x * k, y * k);
+    }
+
+    double len(){
+        return sqrt(x*x + y*y);
     }
 };
  
@@ -159,19 +160,72 @@ point closestToLineSegment(point p, point a, point b)
     if(u > 1.0) return b;
     return a + ((b - a) * u);
 }
+
+typedef vector<point> polygon;
+
+double areaPolygon(vector<point> &polygon)
+{
+	ll area = 0;
+	int j = polygon.size() - 1;
+	for(int i=0;i<(int)polygon.size();++i)
+	{
+		area += (polygon[j].x + polygon[i].x) * (polygon[j].y - polygon[i].y);
+		j = i;
+	}
+
+	return abs(area)/2.0;
+}
+
+// return a,b e c de ax^2 + bx + c = 0
+vector<double> bisector(point p1, point p2, point p3) {
+    vector<double> ans;
+
+    /*
+            p2'
+          /
+         /
+        P1 - - - - - -> bisector
+         \
+          \
+           p3'
+    */
+
+    p2 = p2 - p1;
+    p3 = p3 - p1;
+
+    point v1 = p2 * p3.len();
+    point v2 = p3 * p2.len();
+    point k = v1 + v2 + p1;
+    
+    double A = k.y - p1.y;
+    double B = p1.x - k.x;
+    double C = -A*p1.x - B*p1.y;
+    ans.push_back(A);
+    ans.push_back(B);
+    ans.push_back(C);
+
+    return ans;
+}
+
+
  
 int main(int argc, char **argv)
 {
     optimize;
     #ifdef ONLINE_JUDGE
-	freopen("angle2.in", "r", stdin);
-	freopen("angle2.out", "w", stdout);
+	freopen("bisector.in", "r", stdin);
+	freopen("bisector.out", "w", stdout);
 	#endif
-    point p1, p2;
-    cin >> p1.x >> p1.y >> p2.x >> p2.y;
-    double angle = acos(inner(p1, p2) / (p1.norm() * p2.norm()));
+    
+    point p1, p2, p3;
+
+    cin >> p1.x >> p1.y;
+    cin >> p2.x >> p2.y;
+    cin >> p3.x >> p3.y;
+
+    vector<double> ans = bisector(p1, p2, p3);
     cout << fixed << setprecision(10);
-    cout << angle << endl;
+    cout << ans[0] << " " << ans[1] << " " << ans[2] << endl;
 
     return 0;
 }

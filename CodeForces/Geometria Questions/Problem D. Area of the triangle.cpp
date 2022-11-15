@@ -34,14 +34,11 @@ const double PI = acos(-1.0);
  
 struct point
 {
-    double x, y;
+    int x, y;
     point() { x = y = 0.0; }
     point(double _x, double _y) : x(_x), y(_y) {}
  
-    double norm()
-	{
-		return sqrt(x*x + y*y);
-	}
+    double norm() { return hypot(x, y); }
  
     point normalized()
     {
@@ -159,19 +156,39 @@ point closestToLineSegment(point p, point a, point b)
     if(u > 1.0) return b;
     return a + ((b - a) * u);
 }
+
+typedef vector<point> polygon;
+
+double areaPolygon(vector<point> &polygon)
+{
+	ll area = 0;
+	int j = polygon.size() - 1;
+	for(int i=0;i<(int)polygon.size();++i)
+	{
+		area += (polygon[j].x + polygon[i].x) * (polygon[j].y - polygon[i].y);
+		j = i;
+	}
+
+	return abs(area)/2.0;
+}
  
 int main(int argc, char **argv)
 {
     optimize;
     #ifdef ONLINE_JUDGE
-	freopen("angle2.in", "r", stdin);
-	freopen("angle2.out", "w", stdout);
+	freopen("area1.in", "r", stdin);
+	freopen("area1.out", "w", stdout);
 	#endif
-    point p1, p2;
-    cin >> p1.x >> p1.y >> p2.x >> p2.y;
-    double angle = acos(inner(p1, p2) / (p1.norm() * p2.norm()));
-    cout << fixed << setprecision(10);
-    cout << angle << endl;
+    int n = 3;
 
+    polygon poly;
+    while(n--) {
+        point p;
+        cin >> p.x >> p.y;
+        poly.push_back(p);
+    }
+
+    cout << fixed << setprecision(10);
+    cout << areaPolygon(poly) << endl;
     return 0;
 }
