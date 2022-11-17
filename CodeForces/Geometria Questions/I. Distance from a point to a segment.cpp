@@ -23,12 +23,12 @@
 #define MAXN 101010
 #define MAXL 23
 #define endl '\n'
- 
+
 using namespace std;
 using namespace __gnu_pbds;
- 
+
 #define ordered_set tree<os_type, null_type, less<os_type>, rb_tree_tag, tree_order_statistics_node_update>
- 
+
 #define EPS 1e-9
 const double PI = acos(-1.0);
  
@@ -149,7 +149,7 @@ bool parallel(point a, point b)
 {
     return fabs(cross(a, b)) < EPS;
 }
- 
+
 bool segIntersects(point a, point b, point p, point q)
 {
     if(parallel(a - b, p - q))
@@ -162,7 +162,7 @@ bool segIntersects(point a, point b, point p, point q)
  
 point closestToLineSegment(point p, point a, point b)
 {
-    double u = inner(p - a, b - a) / inner(b - a, b - a);
+    ld u = inner(p - a, b - a) / inner(b - a, b - a);
     if(u < 0.0) return a;
     if(u > 1.0) return b;
     return a + ((b - a) * u);
@@ -242,17 +242,18 @@ int main(int argc, char **argv)
 {
     optimize;
     #ifdef ONLINE_JUDGE
-	freopen("distance1.in", "r", stdin);
-	freopen("distance1.out", "w", stdout);
+	freopen("distance4.in", "r", stdin);
+	freopen("distance4.out", "w", stdout);
 	#endif
     
     point p, p1, p2;
-    int a, b, c;
-    cin >> p.x >> p.y; 
-    cin >> a >> b >> c;
+
+    cin >> p.x >> p.y;
+    cin >> p1.x >> p1.y;
+    cin >> p2.x >> p2.y;
 
     cout << fixed << setprecision(10);
-    cout << disttolineOtherForm(p, a, b, c) << endl;
+    cout << dist(closestToLineSegment(p, p1, p2), p) << endl;
     
     return 0;
 }

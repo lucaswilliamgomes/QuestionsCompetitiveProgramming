@@ -242,17 +242,20 @@ int main(int argc, char **argv)
 {
     optimize;
     #ifdef ONLINE_JUDGE
-	freopen("distance1.in", "r", stdin);
-	freopen("distance1.out", "w", stdout);
+	freopen("distance2.in", "r", stdin);
+	freopen("distance2.out", "w", stdout);
 	#endif
     
     point p, p1, p2;
-    int a, b, c;
+
     cin >> p.x >> p.y; 
-    cin >> a >> b >> c;
+    cin >> p1.x >> p1.y;
+    cin >> p2.x >> p2.y;
+
+    line l(p1, p2);
 
     cout << fixed << setprecision(10);
-    cout << disttolineOtherForm(p, a, b, c) << endl;
+    cout << disttoline(p, l) << endl;
     
     return 0;
 }
