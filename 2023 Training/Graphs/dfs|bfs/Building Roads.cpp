@@ -29,10 +29,43 @@ using namespace __gnu_pbds;
 
 #define ordered_set tree<os_type, null_type, less<os_type>, rb_tree_tag, tree_order_statistics_node_update>
 
+int n, m;
+vector<vector<int>> graph(MAXN);
+vector<bool> visited(MAXN);
+
+void dfs(int node) {
+    visited[node] = true;
+    for (auto v : graph[node]) {
+        if (!visited[v]) dfs(v);
+    }
+}
+
 int main(int argc, char **argv)
 {
     optimize;
+    cin >> n >> m;
 
-    
+    for (int i = 1;i <= m; i++) {
+        int u, v;
+        cin >> u >> v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
+
+    vector<int> ans;
+
+    for (int i = 1; i <= n; i++) {
+        if (!visited[i]) {
+            ans.push_back(i);
+            dfs(i);
+        }
+    }   
+
+    cout << ans.size() - 1 << endl;
+
+    for (int i = 1; i < ans.size(); i++) {
+        cout << ans[i] << " " << ans[i-1] << endl; 
+    }
+
     return 0;
 }
