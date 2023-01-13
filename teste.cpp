@@ -4,16 +4,19 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    queue<int> ar;
-    ar.push(1);
-    ar.push(2);
-    ar.push(2);
-    ar.push(4);
-    ar.push(5);
+    vector<vector<int>> t;
 
-    for (auto it : ar) {
-        cout << it << endl;
+    vector<int> a = {1, 2};
+
+    t.push_back(a);
+
+    for (auto it : t) {
+        for (int i = 0; i < it.size(); i++) {
+            cout << it[i] << " ";
+        }
     }
+
+    cout << endl;
     
     return 0;
 }
