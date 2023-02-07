@@ -20,16 +20,17 @@
 #define EB emplace_back
 #define MOD 1000000007
 #define PRIME 101
-#define MAXN 101010
+#define MAXN 201010
 #define MAXL 23
 #define endl '\n'
+#define int ll
 
 using namespace std;
 using namespace __gnu_pbds;
 
 #define ordered_set tree<os_type, null_type, less<os_type>, rb_tree_tag, tree_order_statistics_node_update>
 
-int main(int argc, char **argv)
+int32_t main(int argc, char **argv)
 {
     optimize;
 
