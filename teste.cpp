@@ -33,16 +33,6 @@ using namespace __gnu_pbds;
 int32_t main(int argc, char **argv)
 {
     optimize;
-    double totalQ, resolvedQ, mtotal, mResolved;
-    cin >> totalQ >> resolvedQ >> mtotal >> mResolved;
-    double somaTotal = mtotal * totalQ;
-    double somaResolvidos = mResolved * resolvedQ;
-    double ans = (somaTotal - somaResolvidos) / (totalQ - resolvedQ);
-    if (ans >= 0 && ans <=  100) {
-        cout << setprecision(8) << fixed;
-        cout << ans << endl;
-    } else {
-        cout << "impossible" << endl;
-    }
+
     return 0;
 }
