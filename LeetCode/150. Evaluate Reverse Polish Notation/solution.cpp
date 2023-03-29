@@ -2,38 +2,30 @@
 
 using namespace std;
 
-int evalRPN(vector<string>& tokens) {
-    int index = 0;
+int resolve(int number1, int number2, string operation) {
+    if (operation == "+") return number1 + number2;
+    else if (operation == "-") return number1 - number2;
+    else if (operation == "*") return number1 * number2;
+    else return number1 / number2;
+}
 
-    while (tokens.size() > 1) {
-        if (tokens[index].size() == 1) {
-            if (tokens[index][0] == '+') {
-                tokens[index - 2] = to_string(stoi(tokens[index - 2]) + stoi(tokens[index - 1]));
-                // remove id i - 1 and i
-                tokens.erase(tokens.begin()+index-1, tokens.begin()+index+1);
-                index -= 2;
-            } else if (tokens[index][0] == '-') {
-                tokens[index - 2] = to_string(stoi(tokens[index - 2]) - stoi(tokens[index - 1]));
-                // remove id i - 1 and i
-                tokens.erase(tokens.begin()+index-1, tokens.begin()+index+1);
-                index -= 2;
-            } else if (tokens[index][0] == '*') {
-                tokens[index - 2] = to_string(stoi(tokens[index - 2]) * stoi(tokens[index - 1]));
-                // remove id i - 1 and i
-                tokens.erase(tokens.begin()+index-1, tokens.begin()+index+1);
-                index -= 2;
-            } else if (tokens[index][0] == '/') {
-                tokens[index - 2] = to_string(stoi(tokens[index - 2]) / stoi(tokens[index - 1]));
-                // remove id i - 1 and i
-                tokens.erase(tokens.begin()+index-1, tokens.begin()+index+1); 
-                index -= 2;  
-            }
+
+int evalRPN(vector<string> &tokens) {
+    stack<int> results;
+
+    for (int i = 0; i < tokens.size(); i++) {
+        if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*" || tokens[i] == "/") {
+            int number2 = results.top();
+            results.pop();
+            int number1 = results.top();
+            results.pop();
+            results.push(resolve(number1, number2, tokens[i]));
+        } else {
+            results.push(stoi(tokens[i]));
         }
-
-        index++;
     }
 
-    return stoi(tokens[0]);
+    return results.top();
 }
 
 int main(int argc, char const *argv[])
