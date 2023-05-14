@@ -33,6 +33,6 @@ using namespace __gnu_pbds;
 int32_t main(int argc, char **argv)
 {
     optimize;
-
+    cout << "Hello world" << endl;
     return 0;
 }
